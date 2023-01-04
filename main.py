@@ -1,9 +1,13 @@
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
 
-url = "https://24h.pchome.com.tw/"
+url = "https://water.taiwanstat.com/"
 rsp = requests.get(url)
 
-soup = BeautifulSoup(rsp.text, 'html.parser')
-print(soup.prettify())  # prettify()用來把 html 程式變漂亮
+# 抓取回傳的狀態碼，200表成功
+if rsp.status_code != 200:
+    print(f'抓取網頁發生錯誤，代碼:{rsp.status_code}')
+    quit() # 結束程式
 
+soup = bs(rsp.text, 'html.parser') #可用html5lib，但要先pip安裝
+print(soup.prettify())  # prettify()用來把 html 程式變漂亮
