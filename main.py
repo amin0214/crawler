@@ -14,7 +14,7 @@ if rsp.status_code != 200:
 # print(rsp.text)
 
 # 也可以用 html5lib，不過要先安裝 pip install html5lib
-soup = BeautifulSoup(rsp.text, 'html.parser')
+soup = BeautifulSoup(rsp.text, 'html5lib')
 
 # prettify()用來把 html 程式變漂亮
 # print(soup.prettify())
